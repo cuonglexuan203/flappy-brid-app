@@ -27,8 +27,8 @@ namespace FlappyBirdApp
         //
         Random random = new Random();
         static Point birdStart = new Point(90, 314);
-        static Point pipeDownStart = new Point(314,-117);
-        static Point pipeUpStart = new Point(311, 426);
+        static Point pipeDownStart = new Point(327,-165);
+        static Point pipeUpStart = new Point(299, 408);
 
 
 
@@ -58,10 +58,17 @@ namespace FlappyBirdApp
             {
                 if (started)
                 {
+                    this.mainTimer.Stop();
+                    this.pipeTimer.Stop();
                     DialogResult result = MessageBox.Show("Are you sure?", "Flappy Bird", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
                         Application.Exit();
+                    }
+                    else
+                    {
+                        this.mainTimer.Start();
+                        this.pipeTimer.Start();
                     }
                 }
                 else
@@ -139,19 +146,22 @@ namespace FlappyBirdApp
 
         private void AppForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (started)
+            if (started && (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up) )
             {
                 e.Handled = true;
                 this.gravity = -10;
+                this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_up3;
             }
         }
 
         private void AppForm_KeyUp(object sender, KeyEventArgs e)
         {
-            if (started)
+            if (started && (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up))
             {
                 e.Handled = true;
                 this.gravity = 3;
+                this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_down;
+
             }
         }
 
@@ -167,7 +177,8 @@ namespace FlappyBirdApp
                 this.PBPipeUp.Location = pipeUpStart;
                 this.PBPipeDown.Location = pipeDownStart;
                 this.PBBird.Location = birdStart;
-
+                this.pipeSpeed = 5;
+                this.score = 0;
                 //
                 started = true;
                 mainTimer.Start();
@@ -187,7 +198,7 @@ namespace FlappyBirdApp
                 int left = this.Width + random.Next(0, this.Width / 2 - PBPipeDown.Width) ;
                 PBPipeDown.Left = left;
                 //
-                int top = -this.PBPipeDown.Height +  random.Next(0, this.Height / 2);
+                int top = -this.PBPipeDown.Height +  random.Next(this.PBPipeDown.Height / 3, this.PnlMain.Height / 2 - this.PBBird.Height) ;
                 this.PBPipeDown.Top = top;
             }
 
@@ -197,7 +208,8 @@ namespace FlappyBirdApp
                 PBPipeUp.Left = left;
                 passedPipeUp = false;
                 //
-                this.PBPipeUp.Top = this.PBPipeDown.Bottom + 53 * 2 + random.Next(35, 70);
+                int top = PnlMain.Height  - random.Next(this.PBPipeUp.Height / 3 + PBGround.Height, this.PnlMain.Height / 2 - this.PBBird.Height) ;
+                this.PBPipeUp.Top = top;
             }
 
 
@@ -211,6 +223,28 @@ namespace FlappyBirdApp
             {
                 passedPipeDown = true;
                 score += 1;
+            }
+
+            //
+            if (score == 16 || score == 15) // level 1
+            {
+                pipeTimer.Interval = 20;
+            }
+            else if (score == 30 || score == 29) // level 2
+            {
+                pipeTimer.Interval = 10;
+            }
+            else if (score == 50 || score == 49) // level 3
+            {
+                pipeTimer.Interval = 5;
+            }
+            else if (score == 100 || score == 99) // level 4
+            {
+                pipeSpeed = 8;
+            }
+            else if (score == 150 || score == 149) // level 5
+            {
+                pipeSpeed = 10;
             }
 
         }

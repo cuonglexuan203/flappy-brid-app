@@ -34,25 +34,25 @@
             this.PnlMain = new System.Windows.Forms.Panel();
             this.LbInstructionStart = new System.Windows.Forms.Label();
             this.LbGameOver = new System.Windows.Forms.Label();
+            this.PnlControl = new System.Windows.Forms.Panel();
+            this.LbTitle = new System.Windows.Forms.Label();
+            this.BtMinimize = new System.Windows.Forms.Button();
+            this.BtnExit = new System.Windows.Forms.Button();
+            this.mainTimer = new System.Windows.Forms.Timer(this.components);
+            this.pipeTimer = new System.Windows.Forms.Timer(this.components);
             this.LbScore = new System.Windows.Forms.Label();
             this.PBGround = new System.Windows.Forms.PictureBox();
             this.PBPipeDown = new System.Windows.Forms.PictureBox();
             this.PBPipeUp = new System.Windows.Forms.PictureBox();
             this.PBBird = new System.Windows.Forms.PictureBox();
-            this.PnlControl = new System.Windows.Forms.Panel();
-            this.LbTitle = new System.Windows.Forms.Label();
             this.PbIcon = new System.Windows.Forms.PictureBox();
-            this.BtMinimize = new System.Windows.Forms.Button();
-            this.BtnExit = new System.Windows.Forms.Button();
-            this.mainTimer = new System.Windows.Forms.Timer(this.components);
-            this.pipeTimer = new System.Windows.Forms.Timer(this.components);
             this.PnlContainer.SuspendLayout();
             this.PnlMain.SuspendLayout();
+            this.PnlControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPipeDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPipeUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBBird)).BeginInit();
-            this.PnlControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +93,7 @@
             this.LbInstructionStart.Name = "LbInstructionStart";
             this.LbInstructionStart.Size = new System.Drawing.Size(230, 21);
             this.LbInstructionStart.TabIndex = 6;
-            this.LbInstructionStart.Text = "Press a key to start";
+            this.LbInstructionStart.Text = "Press space to start";
             // 
             // LbGameOver
             // 
@@ -108,62 +108,6 @@
             this.LbGameOver.TabIndex = 5;
             this.LbGameOver.Text = "Game Over";
             this.LbGameOver.Visible = false;
-            // 
-            // LbScore
-            // 
-            this.LbScore.AutoSize = true;
-            this.LbScore.Font = new System.Drawing.Font("Hack NFM", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbScore.ForeColor = System.Drawing.Color.Black;
-            this.LbScore.Location = new System.Drawing.Point(214, 19);
-            this.LbScore.Margin = new System.Windows.Forms.Padding(0);
-            this.LbScore.Name = "LbScore";
-            this.LbScore.Size = new System.Drawing.Size(33, 35);
-            this.LbScore.TabIndex = 4;
-            this.LbScore.Text = "0";
-            // 
-            // PBGround
-            // 
-            this.PBGround.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PBGround.Image = ((System.Drawing.Image)(resources.GetObject("PBGround.Image")));
-            this.PBGround.Location = new System.Drawing.Point(0, 669);
-            this.PBGround.Name = "PBGround";
-            this.PBGround.Size = new System.Drawing.Size(439, 76);
-            this.PBGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PBGround.TabIndex = 3;
-            this.PBGround.TabStop = false;
-            // 
-            // PBPipeDown
-            // 
-            this.PBPipeDown.Image = ((System.Drawing.Image)(resources.GetObject("PBPipeDown.Image")));
-            this.PBPipeDown.Location = new System.Drawing.Point(324, -117);
-            this.PBPipeDown.Margin = new System.Windows.Forms.Padding(0);
-            this.PBPipeDown.Name = "PBPipeDown";
-            this.PBPipeDown.Size = new System.Drawing.Size(91, 324);
-            this.PBPipeDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PBPipeDown.TabIndex = 2;
-            this.PBPipeDown.TabStop = false;
-            // 
-            // PBPipeUp
-            // 
-            this.PBPipeUp.Image = ((System.Drawing.Image)(resources.GetObject("PBPipeUp.Image")));
-            this.PBPipeUp.Location = new System.Drawing.Point(311, 426);
-            this.PBPipeUp.Margin = new System.Windows.Forms.Padding(0);
-            this.PBPipeUp.Name = "PBPipeUp";
-            this.PBPipeUp.Size = new System.Drawing.Size(91, 364);
-            this.PBPipeUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PBPipeUp.TabIndex = 1;
-            this.PBPipeUp.TabStop = false;
-            // 
-            // PBBird
-            // 
-            this.PBBird.Image = ((System.Drawing.Image)(resources.GetObject("PBBird.Image")));
-            this.PBBird.Location = new System.Drawing.Point(90, 314);
-            this.PBBird.Margin = new System.Windows.Forms.Padding(0);
-            this.PBBird.Name = "PBBird";
-            this.PBBird.Size = new System.Drawing.Size(61, 53);
-            this.PBBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PBBird.TabIndex = 0;
-            this.PBBird.TabStop = false;
             // 
             // PnlControl
             // 
@@ -193,19 +137,6 @@
             this.LbTitle.Text = "Flappy Bird";
             this.LbTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Handler_SetMouseOffset);
             this.LbTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Handler_MovingForm);
-            // 
-            // PbIcon
-            // 
-            this.PbIcon.BackColor = System.Drawing.Color.Transparent;
-            this.PbIcon.Image = ((System.Drawing.Image)(resources.GetObject("PbIcon.Image")));
-            this.PbIcon.Location = new System.Drawing.Point(3, 3);
-            this.PbIcon.Name = "PbIcon";
-            this.PbIcon.Size = new System.Drawing.Size(44, 35);
-            this.PbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbIcon.TabIndex = 4;
-            this.PbIcon.TabStop = false;
-            this.PbIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Handler_SetMouseOffset);
-            this.PbIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Handler_MovingForm);
             // 
             // BtMinimize
             // 
@@ -264,6 +195,75 @@
             this.pipeTimer.Interval = 30;
             this.pipeTimer.Tick += new System.EventHandler(this.pipeTimer_Tick);
             // 
+            // LbScore
+            // 
+            this.LbScore.AutoSize = true;
+            this.LbScore.Font = new System.Drawing.Font("Hack NFM", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbScore.ForeColor = System.Drawing.Color.Black;
+            this.LbScore.Location = new System.Drawing.Point(214, 19);
+            this.LbScore.Margin = new System.Windows.Forms.Padding(0);
+            this.LbScore.Name = "LbScore";
+            this.LbScore.Size = new System.Drawing.Size(33, 35);
+            this.LbScore.TabIndex = 4;
+            this.LbScore.Text = "0";
+            // 
+            // PBGround
+            // 
+            this.PBGround.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PBGround.Image = ((System.Drawing.Image)(resources.GetObject("PBGround.Image")));
+            this.PBGround.Location = new System.Drawing.Point(0, 669);
+            this.PBGround.Name = "PBGround";
+            this.PBGround.Size = new System.Drawing.Size(439, 76);
+            this.PBGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PBGround.TabIndex = 3;
+            this.PBGround.TabStop = false;
+            // 
+            // PBPipeDown
+            // 
+            this.PBPipeDown.Image = ((System.Drawing.Image)(resources.GetObject("PBPipeDown.Image")));
+            this.PBPipeDown.Location = new System.Drawing.Point(327, -165);
+            this.PBPipeDown.Margin = new System.Windows.Forms.Padding(0);
+            this.PBPipeDown.Name = "PBPipeDown";
+            this.PBPipeDown.Size = new System.Drawing.Size(91, 370);
+            this.PBPipeDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PBPipeDown.TabIndex = 2;
+            this.PBPipeDown.TabStop = false;
+            // 
+            // PBPipeUp
+            // 
+            this.PBPipeUp.Image = ((System.Drawing.Image)(resources.GetObject("PBPipeUp.Image")));
+            this.PBPipeUp.Location = new System.Drawing.Point(299, 408);
+            this.PBPipeUp.Margin = new System.Windows.Forms.Padding(0);
+            this.PBPipeUp.Name = "PBPipeUp";
+            this.PBPipeUp.Size = new System.Drawing.Size(91, 370);
+            this.PBPipeUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PBPipeUp.TabIndex = 1;
+            this.PBPipeUp.TabStop = false;
+            // 
+            // PBBird
+            // 
+            this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_normal;
+            this.PBBird.Location = new System.Drawing.Point(90, 314);
+            this.PBBird.Margin = new System.Windows.Forms.Padding(0);
+            this.PBBird.Name = "PBBird";
+            this.PBBird.Size = new System.Drawing.Size(70, 53);
+            this.PBBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PBBird.TabIndex = 0;
+            this.PBBird.TabStop = false;
+            // 
+            // PbIcon
+            // 
+            this.PbIcon.BackColor = System.Drawing.Color.Transparent;
+            this.PbIcon.Image = ((System.Drawing.Image)(resources.GetObject("PbIcon.Image")));
+            this.PbIcon.Location = new System.Drawing.Point(3, 3);
+            this.PbIcon.Name = "PbIcon";
+            this.PbIcon.Size = new System.Drawing.Size(44, 35);
+            this.PbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbIcon.TabIndex = 4;
+            this.PbIcon.TabStop = false;
+            this.PbIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Handler_SetMouseOffset);
+            this.PbIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Handler_MovingForm);
+            // 
             // AppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -284,12 +284,12 @@
             this.PnlContainer.ResumeLayout(false);
             this.PnlMain.ResumeLayout(false);
             this.PnlMain.PerformLayout();
+            this.PnlControl.ResumeLayout(false);
+            this.PnlControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBGround)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPipeDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPipeUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBBird)).EndInit();
-            this.PnlControl.ResumeLayout(false);
-            this.PnlControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbIcon)).EndInit();
             this.ResumeLayout(false);
 
@@ -306,13 +306,13 @@
         private System.Windows.Forms.PictureBox PBPipeUp;
         private System.Windows.Forms.PictureBox PBPipeDown;
         private System.Windows.Forms.PictureBox PBGround;
-        private System.Windows.Forms.Label LbScore;
         private System.Windows.Forms.Label LbGameOver;
         private System.Windows.Forms.PictureBox PbIcon;
         private System.Windows.Forms.Label LbTitle;
         private System.Windows.Forms.Timer mainTimer;
         private System.Windows.Forms.Label LbInstructionStart;
         private System.Windows.Forms.Timer pipeTimer;
+        private System.Windows.Forms.Label LbScore;
     }
 }
 

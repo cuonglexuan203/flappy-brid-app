@@ -98,5 +98,20 @@
   <ItemGroup>
     <None Include="Resources\pipedown.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bird-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bird-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bird-up.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bird-up2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bird-up3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
