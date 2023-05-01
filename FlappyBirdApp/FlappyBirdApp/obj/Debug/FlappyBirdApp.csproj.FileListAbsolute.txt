@@ -9,3 +9,14 @@ D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\FINAL PROJECT\FlappyBi
 D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\FINAL PROJECT\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.csproj.CoreCompileInputs.cache
 D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\FINAL PROJECT\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.exe
 D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\FINAL PROJECT\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.pdb
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\bin\Debug\FlappyBirdApp.exe.config
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\bin\Debug\FlappyBirdApp.exe
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\bin\Debug\FlappyBirdApp.pdb
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.csproj.AssemblyReference.cache
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.csproj.SuggestedBindingRedirects.cache
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.AppForm.resources
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.Properties.Resources.resources
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.csproj.GenerateResource.cache
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.csproj.CoreCompileInputs.cache
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.exe
+D:\HCMUTE\Subject\2022-2023\Semester2\Windows_Programming\Midterm\FlappyBird\FlappyBirdApp\FlappyBirdApp\obj\Debug\FlappyBirdApp.pdb

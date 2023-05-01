@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace FlappyBirdApp
 {
     public partial class AppForm : Form
@@ -18,6 +19,7 @@ namespace FlappyBirdApp
         bool started = false;
         bool passedPipeUp = false;
         bool passedPipeDown = false;
+        bool paused = false;
         //
         Point mouseOffset;
         int gravity = 5;
@@ -36,9 +38,64 @@ namespace FlappyBirdApp
         //
         public AppForm()
         {
+
             InitializeComponent();
+            
+        }
+        private void AppForm_Load(object sender, EventArgs e)
+        {
+            CustomizeUI();
+            this.LbScore.Text = score.ToString();
+
+        }
+        private void Handler_StartingGame()
+        {
+            this.LbInstructionStart.Hide();
+            this.LbGameOver.Hide();
+            this.PBPipeUp.Location = pipeUpStart;
+            this.PBPipeDown.Location = pipeDownStart;
+            this.PBBird.Location = birdStart;
+            this.pipeSpeed = 5;
+            this.score = 0;
+            //
+            started = true;
+            mainTimer.Start();
+            pipeTimer.Start();
+        }
+        private void AppForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!started)
+            {
+                e.Handled = true;
+                //
+                Thread.Sleep(200);
+                Handler_StartingGame();
+            }
+        }
+        private void AppForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (started && (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up))
+            {
+                e.Handled = true;
+                this.gravity = 3;
+                this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_down;
+            }
         }
 
+        private void AppForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (started && (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up))
+            {
+                e.Handled = true;
+                if (paused)
+                {
+                    ContinueGamePlay();
+                }
+                this.gravity = -10;
+                this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_up3;
+            }
+        }
+        //
         private void TxtTitle_MouseDown(object sender, MouseEventArgs e)
         {
             PnlContainer.Focus();
@@ -49,7 +106,18 @@ namespace FlappyBirdApp
             Button btn = sender as Button;
             btn.ForeColor = Color.FromArgb(16, 117, 194);
         }
-
+        private void PauseGamePlay()
+        {
+            this.mainTimer.Stop();
+            this.pipeTimer.Stop();
+            paused = true;
+        }
+        private void ContinueGamePlay()
+        {
+            this.mainTimer.Start();
+            this.pipeTimer.Start();
+            paused = false;
+        }
         private void Handler_FormBtn_Click(object sender, MouseEventArgs e)
         {
             Button btn = sender as Button;
@@ -78,7 +146,10 @@ namespace FlappyBirdApp
             }
             else if (btn.Tag.ToString() == "minimize")
             {
+
+                PauseGamePlay();
                 this.WindowState = FormWindowState.Minimized;
+                this.PnlMain.Focus();
             }
             
         }
@@ -124,15 +195,8 @@ namespace FlappyBirdApp
             }
         }
 
-        private void AppForm_Load(object sender, EventArgs e)
+        private void Handler_GameOver()
         {
-            this.LbScore.Text = score.ToString();
-        }
-
-        private void mainTimer_Tick(object sender, EventArgs e)
-        {
-            this.PBBird.Top += gravity;
-            //
             if (this.PBBird.Bounds.IntersectsWith(PBPipeUp.Bounds) || this.PBBird.Bounds.IntersectsWith(PBPipeDown.Bounds)
                 || this.PBBird.Bounds.IntersectsWith(PBGround.Bounds))
             {
@@ -143,49 +207,42 @@ namespace FlappyBirdApp
                 this.LbInstructionStart.Show();
             }
         }
-
-        private void AppForm_KeyDown(object sender, KeyEventArgs e)
+        //
+        private void mainTimer_Tick(object sender, EventArgs e)
         {
-            if (started && (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up) )
+            this.PBBird.Top += gravity;
+            //
+            Handler_GameOver();
+        }
+        private void ProcessLevel()
+        {
+            if (score == 10 || score == 9) // level 1
             {
-                e.Handled = true;
-                this.gravity = -10;
-                this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_up3;
+                pipeTimer.Interval = 15;
+            }
+            else if (score == 26 || score == 25) // level 2
+            {
+                pipeTimer.Interval = 5;
+                pipeSpeed = 6;
+            }
+            else if (score == 40 || score == 39) // level 3
+            {
+                pipeTimer.Interval = 1;
+                pipeSpeed = 8;
+            }
+            else if (score == 70 || score == 69) // level 4
+            {
+                pipeSpeed = 10;
+            }
+            else if (score == 100 || score == 99) // level 5
+            {
+                pipeSpeed = 12;
+            }
+            else if (score == 150 || score == 149) // level 6
+            {
+                pipeSpeed = 15;
             }
         }
-
-        private void AppForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (started && (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up))
-            {
-                e.Handled = true;
-                this.gravity = 3;
-                this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_down;
-
-            }
-        }
-
-        private void AppForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!started)
-            {
-                e.Handled = true;
-                //
-                Thread.Sleep(200);
-                this.LbInstructionStart.Hide();
-                this.LbGameOver.Hide();
-                this.PBPipeUp.Location = pipeUpStart;
-                this.PBPipeDown.Location = pipeDownStart;
-                this.PBBird.Location = birdStart;
-                this.pipeSpeed = 5;
-                this.score = 0;
-                //
-                started = true;
-                mainTimer.Start();
-                pipeTimer.Start();
-            }
-        }
-
         private void pipeTimer_Tick(object sender, EventArgs e)
         {
             this.PBPipeUp.Left -= pipeSpeed;
@@ -226,26 +283,7 @@ namespace FlappyBirdApp
             }
 
             //
-            if (score == 16 || score == 15) // level 1
-            {
-                pipeTimer.Interval = 20;
-            }
-            else if (score == 30 || score == 29) // level 2
-            {
-                pipeTimer.Interval = 10;
-            }
-            else if (score == 50 || score == 49) // level 3
-            {
-                pipeTimer.Interval = 5;
-            }
-            else if (score == 100 || score == 99) // level 4
-            {
-                pipeSpeed = 8;
-            }
-            else if (score == 150 || score == 149) // level 5
-            {
-                pipeSpeed = 10;
-            }
+            ProcessLevel();
 
         }
     }
