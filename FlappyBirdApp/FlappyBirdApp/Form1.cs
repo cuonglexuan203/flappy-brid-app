@@ -10,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using Timer = System.Windows.Forms.Timer;
 
 namespace FlappyBirdApp
@@ -55,7 +57,7 @@ namespace FlappyBirdApp
             //
             UserData = new UserData();
             //
-
+            Keyboard.ClearFocus();
         }
         private void ShowMenuFeatures()
         {
