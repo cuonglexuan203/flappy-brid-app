@@ -13,8 +13,6 @@ namespace FlappyBirdApp
     public partial class AppForm
     {
 
-
-
         //
         private void CustomizeUI()
         {

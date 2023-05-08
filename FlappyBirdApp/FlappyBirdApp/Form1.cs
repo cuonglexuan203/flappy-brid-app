@@ -31,21 +31,21 @@ namespace FlappyBirdApp
         static Point birdStart = new Point(90, 314);
         static Point pipeDownStart = new Point(327,-165);
         static Point pipeUpStart = new Point(299, 408);
-
-
-
+        //
+        UserData userData;
 
         //
         public AppForm()
         {
 
             InitializeComponent();
-            
         }
         private void AppForm_Load(object sender, EventArgs e)
         {
             CustomizeUI();
             this.LbScore.Text = score.ToString();
+            //
+            userData = new UserData();
 
         }
         private void Handler_StartingGame()
@@ -56,12 +56,15 @@ namespace FlappyBirdApp
             this.PBPipeDown.Location = pipeDownStart;
             this.PBBird.Location = birdStart;
             this.pipeSpeed = 5;
+            this.pipeTimer.Interval = 30;
             this.score = 0;
+            //
             //
             started = true;
             mainTimer.Start();
             pipeTimer.Start();
         }
+        // starting game
         private void AppForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!started)
@@ -84,16 +87,25 @@ namespace FlappyBirdApp
 
         private void AppForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (started && (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up))
+            if (started)
             {
-                e.Handled = true;
-                if (paused)
+                if (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
                 {
-                    ContinueGamePlay();
+                    e.Handled = true;
+                    if (paused)
+                    {
+                        ContinueGamePlay();
+                    }
+                    this.gravity = -10;
+                    this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_up3;
                 }
-                this.gravity = -10;
-                this.PBBird.Image = global::FlappyBirdApp.Properties.Resources.bird_up3;
+                else if (e.KeyCode == Keys.Escape)
+                {
+                    PauseGamePlay();
+                }
+                
             }
+            
         }
         //
         private void TxtTitle_MouseDown(object sender, MouseEventArgs e)
@@ -200,12 +212,18 @@ namespace FlappyBirdApp
             if (this.PBBird.Bounds.IntersectsWith(PBPipeUp.Bounds) || this.PBBird.Bounds.IntersectsWith(PBPipeDown.Bounds)
                 || this.PBBird.Bounds.IntersectsWith(PBGround.Bounds))
             {
-                started = false;
-                this.mainTimer.Stop();
-                this.pipeTimer.Stop();
-                this.LbGameOver.Show();
-                this.LbInstructionStart.Show();
+                GameOver();
             }
+        }
+        private void GameOver()
+        {
+            this.userData.Score = (this.userData.Score < score) ? score : this.userData.Score;
+            //
+            started = false;
+            this.mainTimer.Stop();
+            this.pipeTimer.Stop();
+            this.LbGameOver.Show();
+            this.LbInstructionStart.Show();
         }
         //
         private void mainTimer_Tick(object sender, EventArgs e)
