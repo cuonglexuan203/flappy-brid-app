@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FlappyBirdApp
 {
-    internal class UserData
+    public class UserData
     {
-        private int score = 0;
+        private int score = 0;// highest score
 
-        public int Score { get => score; set => score = value; }
+        public int Score { get => score; set => score = value; } 
     }
 }

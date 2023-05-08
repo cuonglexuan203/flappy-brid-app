@@ -33,6 +33,12 @@
             this.PnlContainer = new System.Windows.Forms.Panel();
             this.PnlMain = new System.Windows.Forms.Panel();
             this.PnlGamePlay = new System.Windows.Forms.Panel();
+            this.LbCountDown = new System.Windows.Forms.Label();
+            this.BtnPlay = new System.Windows.Forms.Button();
+            this.PnlShow = new System.Windows.Forms.Panel();
+            this.LbHighestScoreValue = new System.Windows.Forms.Label();
+            this.LbHighestScrore = new System.Windows.Forms.Label();
+            this.BtnScore = new System.Windows.Forms.Button();
             this.LbScore = new System.Windows.Forms.Label();
             this.LbGameOver = new System.Windows.Forms.Label();
             this.PBPipeDown = new System.Windows.Forms.PictureBox();
@@ -47,9 +53,11 @@
             this.BtnExit = new System.Windows.Forms.Button();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.pipeTimer = new System.Windows.Forms.Timer(this.components);
+            this.countDownTimer = new System.Windows.Forms.Timer(this.components);
             this.PnlContainer.SuspendLayout();
             this.PnlMain.SuspendLayout();
             this.PnlGamePlay.SuspendLayout();
+            this.PnlShow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBPipeDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPipeUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBBird)).BeginInit();
@@ -72,8 +80,9 @@
             // PnlMain
             // 
             this.PnlMain.BackColor = System.Drawing.Color.Transparent;
-            this.PnlMain.Controls.Add(this.PnlGamePlay);
             this.PnlMain.Controls.Add(this.LbInstructionStart);
+            this.PnlMain.Controls.Add(this.LbScore);
+            this.PnlMain.Controls.Add(this.PnlGamePlay);
             this.PnlMain.Controls.Add(this.PBGround);
             this.PnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlMain.Location = new System.Drawing.Point(0, 41);
@@ -86,7 +95,10 @@
             // 
             this.PnlGamePlay.BackgroundImage = global::FlappyBirdApp.Properties.Resources.background1;
             this.PnlGamePlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PnlGamePlay.Controls.Add(this.LbScore);
+            this.PnlGamePlay.Controls.Add(this.LbCountDown);
+            this.PnlGamePlay.Controls.Add(this.BtnPlay);
+            this.PnlGamePlay.Controls.Add(this.PnlShow);
+            this.PnlGamePlay.Controls.Add(this.BtnScore);
             this.PnlGamePlay.Controls.Add(this.LbGameOver);
             this.PnlGamePlay.Controls.Add(this.PBPipeDown);
             this.PnlGamePlay.Controls.Add(this.PBPipeUp);
@@ -98,13 +110,87 @@
             this.PnlGamePlay.Size = new System.Drawing.Size(437, 667);
             this.PnlGamePlay.TabIndex = 7;
             // 
+            // LbCountDown
+            // 
+            this.LbCountDown.AutoSize = true;
+            this.LbCountDown.Font = new System.Drawing.Font("Hack NF", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbCountDown.ForeColor = System.Drawing.Color.Red;
+            this.LbCountDown.Location = new System.Drawing.Point(208, 266);
+            this.LbCountDown.Name = "LbCountDown";
+            this.LbCountDown.Size = new System.Drawing.Size(44, 46);
+            this.LbCountDown.TabIndex = 19;
+            this.LbCountDown.Text = "3";
+            // 
+            // BtnPlay
+            // 
+            this.BtnPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
+            this.BtnPlay.FlatAppearance.BorderSize = 0;
+            this.BtnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPlay.Font = new System.Drawing.Font("Hack NFM", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPlay.ForeColor = System.Drawing.Color.White;
+            this.BtnPlay.Location = new System.Drawing.Point(174, 403);
+            this.BtnPlay.Name = "BtnPlay";
+            this.BtnPlay.Size = new System.Drawing.Size(88, 48);
+            this.BtnPlay.TabIndex = 18;
+            this.BtnPlay.TabStop = false;
+            this.BtnPlay.Text = "Play";
+            this.BtnPlay.UseVisualStyleBackColor = false;
+            this.BtnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
+            // 
+            // PnlShow
+            // 
+            this.PnlShow.BackColor = System.Drawing.Color.Transparent;
+            this.PnlShow.Controls.Add(this.LbHighestScoreValue);
+            this.PnlShow.Controls.Add(this.LbHighestScrore);
+            this.PnlShow.Location = new System.Drawing.Point(125, 355);
+            this.PnlShow.Margin = new System.Windows.Forms.Padding(0);
+            this.PnlShow.Name = "PnlShow";
+            this.PnlShow.Size = new System.Drawing.Size(244, 29);
+            this.PnlShow.TabIndex = 17;
+            // 
+            // LbHighestScoreValue
+            // 
+            this.LbHighestScoreValue.AutoSize = true;
+            this.LbHighestScoreValue.Font = new System.Drawing.Font("Hack NFM", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbHighestScoreValue.Location = new System.Drawing.Point(218, 0);
+            this.LbHighestScoreValue.Name = "LbHighestScoreValue";
+            this.LbHighestScoreValue.Size = new System.Drawing.Size(26, 26);
+            this.LbHighestScoreValue.TabIndex = 16;
+            this.LbHighestScoreValue.Text = "0";
+            // 
+            // LbHighestScrore
+            // 
+            this.LbHighestScrore.AutoSize = true;
+            this.LbHighestScrore.Font = new System.Drawing.Font("Hack NFM", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbHighestScrore.Location = new System.Drawing.Point(3, 0);
+            this.LbHighestScrore.Name = "LbHighestScrore";
+            this.LbHighestScrore.Size = new System.Drawing.Size(222, 26);
+            this.LbHighestScrore.TabIndex = 15;
+            this.LbHighestScrore.Text = "Highest Score: ";
+            // 
+            // BtnScore
+            // 
+            this.BtnScore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
+            this.BtnScore.FlatAppearance.BorderSize = 0;
+            this.BtnScore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnScore.Font = new System.Drawing.Font("Hack NFM", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnScore.ForeColor = System.Drawing.Color.White;
+            this.BtnScore.Location = new System.Drawing.Point(173, 483);
+            this.BtnScore.Name = "BtnScore";
+            this.BtnScore.Size = new System.Drawing.Size(88, 48);
+            this.BtnScore.TabIndex = 16;
+            this.BtnScore.TabStop = false;
+            this.BtnScore.Text = "Score";
+            this.BtnScore.UseVisualStyleBackColor = false;
+            this.BtnScore.Click += new System.EventHandler(this.BtnScore_Click);
+            // 
             // LbScore
             // 
             this.LbScore.AutoSize = true;
-            this.LbScore.BackColor = System.Drawing.Color.Transparent;
+            this.LbScore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(216)))), ((int)(((byte)(149)))));
             this.LbScore.Font = new System.Drawing.Font("Hack NFM", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbScore.ForeColor = System.Drawing.Color.Black;
-            this.LbScore.Location = new System.Drawing.Point(179, 47);
+            this.LbScore.Location = new System.Drawing.Point(196, 683);
             this.LbScore.Margin = new System.Windows.Forms.Padding(0);
             this.LbScore.Name = "LbScore";
             this.LbScore.Size = new System.Drawing.Size(33, 35);
@@ -166,7 +252,7 @@
             this.LbInstructionStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LbInstructionStart.Font = new System.Drawing.Font("Hack NF", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbInstructionStart.ForeColor = System.Drawing.Color.Black;
-            this.LbInstructionStart.Location = new System.Drawing.Point(125, 703);
+            this.LbInstructionStart.Location = new System.Drawing.Point(121, 712);
             this.LbInstructionStart.Name = "LbInstructionStart";
             this.LbInstructionStart.Size = new System.Drawing.Size(230, 21);
             this.LbInstructionStart.TabIndex = 6;
@@ -282,6 +368,11 @@
             this.pipeTimer.Interval = 30;
             this.pipeTimer.Tick += new System.EventHandler(this.pipeTimer_Tick);
             // 
+            // countDownTimer
+            // 
+            this.countDownTimer.Interval = 1000;
+            this.countDownTimer.Tick += new System.EventHandler(this.CountDown_Tick);
+            // 
             // AppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -298,13 +389,14 @@
             this.Text = "Flappy Bird";
             this.Load += new System.EventHandler(this.AppForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AppForm_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AppForm_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AppForm_KeyUp);
             this.PnlContainer.ResumeLayout(false);
             this.PnlMain.ResumeLayout(false);
             this.PnlMain.PerformLayout();
             this.PnlGamePlay.ResumeLayout(false);
             this.PnlGamePlay.PerformLayout();
+            this.PnlShow.ResumeLayout(false);
+            this.PnlShow.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBPipeDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPipeUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBBird)).EndInit();
@@ -335,6 +427,13 @@
         private System.Windows.Forms.PictureBox PBPipeDown;
         private System.Windows.Forms.PictureBox PBPipeUp;
         private System.Windows.Forms.PictureBox PBBird;
+        private System.Windows.Forms.Panel PnlShow;
+        private System.Windows.Forms.Label LbHighestScoreValue;
+        private System.Windows.Forms.Label LbHighestScrore;
+        private System.Windows.Forms.Button BtnScore;
+        private System.Windows.Forms.Button BtnPlay;
+        private System.Windows.Forms.Timer countDownTimer;
+        private System.Windows.Forms.Label LbCountDown;
     }
 }
 

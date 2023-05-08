@@ -118,6 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PBGround.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAVAAAABwBAMAAAC6HTVoAAAABGdBTUEAALGPC/xhBQAAABVQTFRFVDhH
+        3tiVnOZZc78u16hMVYAi5P2LynK5WwAAAAlwSFlzAAALDAAACwwBP0AiyAAAABx0RVh0U29mdHdhcmUA
+        QWRvYmUgRmlyZXdvcmtzIENTNui8sowAAACvSURBVHja7c4xDcNQAMXAUvgUSiEUSqEUyh9CpWDwkCed
+        J4/3Ut1vpB3odfe+e/KPQZ/vvLagA84t6IJzCjrhXIJuOIegI84h6HekHehnpB3oGQm0DrQOtA60DrQO
+        tA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQO
+        tA60DrQOtA60DrQOtA60DrRuBHrOH81swZMxevjpAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="PBPipeDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAL4AAAIsCAYAAABMRRP8AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -1465,16 +1475,6 @@
         sYMziOsAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="PBGround.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAVAAAABwBAMAAAC6HTVoAAAABGdBTUEAALGPC/xhBQAAABVQTFRFVDhH
-        3tiVnOZZc78u16hMVYAi5P2LynK5WwAAAAlwSFlzAAALDAAACwwBP0AiyAAAABx0RVh0U29mdHdhcmUA
-        QWRvYmUgRmlyZXdvcmtzIENTNui8sowAAACvSURBVHja7c4xDcNQAMXAUvgUSiEUSqEUyh9CpWDwkCed
-        J4/3Ut1vpB3odfe+e/KPQZ/vvLagA84t6IJzCjrhXIJuOIegI84h6HekHehnpB3oGQm0DrQOtA60DrQO
-        tA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQOtA60DrQO
-        tA60DrQOtA60DrQOtA60DrRuBHrOH81swZMxevjpAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="PbIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -1607,5 +1607,8 @@
   </metadata>
   <metadata name="pipeTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>146, 17</value>
+  </metadata>
+  <metadata name="countDownTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>271, 17</value>
   </metadata>
 </root>

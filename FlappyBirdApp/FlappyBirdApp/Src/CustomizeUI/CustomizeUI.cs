@@ -14,9 +14,18 @@ namespace FlappyBirdApp
     {
 
         //
+        private void HideControls(List<Control> ctr) // initial hide
+        {
+            foreach (Control c in ctr)
+            {
+                c.Hide();
+            }
+        }
+        //
         private void CustomizeUI()
         {
             DrawRectangleFrame(this);
+            HideControls(new List<Control> { this.PnlShow, this.LbCountDown});
         }
         private void DrawRectangleFrame(Control ctr) 
         {

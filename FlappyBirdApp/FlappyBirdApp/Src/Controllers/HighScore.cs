@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FlappyBirdApp.Src.Controllers
 {
-    public partial class Menu : Form
+    public partial class HighScore : Form
     {
-        public Menu()
+        public HighScore()
         {
             InitializeComponent();
         }
